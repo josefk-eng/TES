@@ -1,0 +1,15 @@
+{% load static %}
+{% block message %}
+
+{% for message in messages %}
+    <div style="position:absolute;top:20px;right:0;width:50vw;z-index:9999" class="alert {% if message.tags == 'success' %} alert-success {% else %} alert-danger {% endif %} alert-dismissible fade show" role="alert">{{message}}
+        {% if message.tags == 'success'%}
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Log Out</button>
+            </form>
+        {% endif %}
+        <a href="" type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+    </div>
+{% endfor %}
+{% endblock %}

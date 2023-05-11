@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}" />
+<section class="main d-flex">
+    <div class="card login">
+        <div class="card-body p-5">
+            <div class="text-center">
+                <img class="rounded-circle bg-light mb-2" src="{% static 'img/favicon.ico' %}" alt="logo" width="100px" height="100px" />
+            </div>
+            {% block login-block %}
+            {% endblock %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
