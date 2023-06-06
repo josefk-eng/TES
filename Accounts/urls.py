@@ -8,4 +8,5 @@ urlpatterns = [
     path("reset/<int:id>", views.reset_password, name="reset"),
     path("change", views.change, name="change"),
     path("logout", views.logout_view, name="logout"),
+    path("keyIn", views.loginClient, name="keyIn"),
 ]

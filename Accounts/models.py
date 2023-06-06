@@ -5,7 +5,8 @@ from django.utils.timezone import now
 from . import managers
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+from django.utils import timezone
 
 
 class User(AbstractUser):
@@ -18,7 +19,7 @@ class User(AbstractUser):
     role = models.CharField(max_length=50, choices=Role.choices)
     code = models.IntegerField(default=0)
     prev_code = models.IntegerField(default=0)
-    expiry_date = models.DateTimeField('code expired')
+    expiry_date = models.DateTimeField('code expired', default=timezone.now())
 
     def save(self, *args, **kwargs):
         if not self.pk:

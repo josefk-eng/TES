@@ -4,4 +4,5 @@ from . import views
 urlpatterns = [
     path("", views.admin, name="adminHome"),
     path("login/", include("Accounts.urls")),
+    path("api/", include("StoreAPI.urls")),
 ]

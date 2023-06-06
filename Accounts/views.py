@@ -9,6 +9,10 @@ from . import utils
 from utils import emailConfigs
 import secrets
 
+from rest_framework.decorators import api_view
+from .serializers import UserSerializer
+from rest_framework.response import Response
+
 
 # Create your views here.
 
@@ -150,3 +154,13 @@ def change(request):
     else:
         context = {"title": "Reset Password"}
         return render(request, "reset_password.html", context)
+
+
+@api_view(["POST"])
+def loginClient(request):
+    login_form = auth_form.AuthenticationForm(request, data=request.POST)
+    if login_form.is_valid():
+        return Response(login_form.data)
+    else:
+        return Response(login_form.errors)
+
