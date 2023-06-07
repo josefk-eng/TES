@@ -42,7 +42,11 @@ class Product(models.Model):
     category = models.CharField(max_length=50, choices=Category.choices, default=Category.UNCATEGORISED)
     tag = models.ManyToManyField(Tag)
     unit = models.CharField(max_length=50, default="Kgs")
-    availability = models.BooleanField(default=True)
+    availability = models.BooleanField(default=True),
+    section = models.CharField(max_length=100, default="ALL")
+    recomPoints = models.IntegerField(default=0)
+    dealPoints = models.IntegerField(default=0)
+    deliveryPoints = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
