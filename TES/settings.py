@@ -48,14 +48,14 @@ INSTALLED_APPS = [
     "Accounts",
     "Store",
     "crispy_forms",
-    "crispy_bootstrap5",
+    # "crispy_bootstrap5",
     'rest_framework',
     'StoreAPI'
 ]
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-
-CRISPY_TEMPLATE_PACK = "bootstrap5"
+# CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+#
+# CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 REST_FRAMEWORK = {
     # 'DEFAULT_PERMISSION_CLASSES': (
