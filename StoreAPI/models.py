@@ -22,6 +22,9 @@ class Banner(models.Model):
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to="img/banners", default="bannerPH.jpg")
 
+    def __str__(self):
+        return self.name
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=100)
