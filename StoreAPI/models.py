@@ -28,6 +28,9 @@ class Tag(models.Model):
     isActive = models.BooleanField(default=False)
     banner = models.ForeignKey(Banner, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
@@ -41,11 +44,17 @@ class Product(models.Model):
     unit = models.CharField(max_length=50, default="Kgs")
     availability = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Review(models.Model):
     review = models.TextField()
     rating = models.IntegerField()
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.product.name
 
 
 class UserToken(models.Model):
@@ -82,7 +91,7 @@ class Order(models.Model):
         verbose_name_plural = _("Order")
 
     def __str__(self):
-        return str(self.pk)
+        return self.contactName
 
     def get_absolute_url(self):
         return reverse("Order", kwargs={"pk": self.pk})
