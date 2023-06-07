@@ -105,3 +105,15 @@ def addressing(request):
         return Response(serializer.data)
     else:
         return custom_exception_handler(APIException(detail="Unknown AddressType", code=status.HTTP_400_BAD_REQUEST), context={"request": request})
+
+
+@api_view(['GET'])
+def search(request, query):
+    category = models.Tag.objects.filter(name__icontains=query)
+    products = models.Product.objects.filter(name__icontains=query)
+    cat_serializer = Serializers.TagSerializer(category, many=True)
+    prod_serializer = Serializers.ProductSerializer(products, many=True)
+    return Response({
+        "depts": cat_serializer.data,
+        "products": prod_serializer.data
+    })

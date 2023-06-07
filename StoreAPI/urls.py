@@ -18,7 +18,8 @@ from .views import (
     GetVillage,
     GetStreet,
     AddUser,
-    AddOrder
+    AddOrder,
+    search
 )
 
 urlpatterns = [
@@ -39,4 +40,5 @@ urlpatterns = [
     path(r'street', GetStreet.as_view(), name='street'),
     path(r'addUser', AddUser.as_view(), name='addUser'),
     path(r'order', AddOrder.as_view(), name='order'),
+    path('search/<str:query>', search,name='search'),
 ]
