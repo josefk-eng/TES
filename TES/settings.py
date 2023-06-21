@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-8)ukuj6=&u0g-ww(6ce9!20ofcb@+xe4bj1ebvg%$*-6-06d4x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost","10.0.2.2","192.168.188.11","172.20.10.7","18.132.61.137","apis.jonestah.com","www.apis.jonestah.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost","10.0.2.2","192.168.230.11","172.20.10.7","18.132.61.137","apis.jonestah.com","www.apis.jonestah.com"]
 
 # Email setup
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     'rest_framework',
-    'StoreAPI'
+    'StoreAPI',
+    'kisi'
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
