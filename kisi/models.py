@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext as _
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 # Create your models here.
@@ -37,3 +39,12 @@ class KReview(models.Model):
 
     def get_absolute_url(self):
         return reverse("KReview_detail", kwargs={"pk": self.pk})
+
+
+@receiver(post_save, sender=KReview)
+def updateProduct(sender, instance, **kwargs):
+    product = KProduct.objects.get(id=instance.product.id)
+    reviews = KReview.objects.all()
+    product.rating = sum(list(map(lambda r: r.rate, reviews)))/len(reviews)
+    print(f"new rating of {product.name} is {product.rating}")
+    product.save()
